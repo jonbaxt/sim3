@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './Dashboard.css';
-import Nav from '../../FunctionalComps/Nav/Nav';
+// import Nav from '../../FunctionalComps/Nav/Nav';
 import axios from 'axios';
 
 class Dashboard extends Component  {
@@ -26,22 +27,30 @@ class Dashboard extends Component  {
         this.setState({ search: e })
         console.log(this.state.search)
     }
+
+    givePostInfo = () => {
+        return this.state.posts;
+    }
     render(){
         let createPosts = this.state.posts.map( ( element, index ) => {
             return (
-                <div key={element.id}>
-                    {/* <Link >  */}
-                    <h1>{element.title}</h1>
+                    <Link key={element.id} to={`/post/${element.id}`} className='links' > 
+                <div key={element.id} className='previewContainer' takethis={this.givePostInfo}>
                     
-                    <img className='' src={this.props.profile} alt='' />
-                    <p>{this.props.username}</p>
-                    {/* </Link> */}
+                    <h1>{element.title}</h1>
+                    <div className='flR'>
+                    <p>{element.username}</p>
+                    <img className='profilePicDash' src={element.profile_pic} alt='' />
+                    </div>
+                
                 </div>
+                    </Link>
             )
         })
         return (
             <div>
-                <Nav />
+                {console.log(this.props.match)}
+                {/* <Nav /> */}
                 <div className='dashMainBox'>
                     <div className='topContainer'>
                         <input type='text' onChange={ (e)=> this.handleSearch(e.target.value)}value={this.state.search}/>
@@ -50,7 +59,7 @@ class Dashboard extends Component  {
                         <input type='checkbox' value='My Posts'/><span>MyPosts</span>
                     </div>
                     <div className='bottomContainer'>
-                    
+                    {createPosts}
                     </div>
                 
                 

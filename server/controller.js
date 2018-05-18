@@ -43,6 +43,12 @@ module.exports = {
         }).catch( err => {
             res.status(500).send(
             console.log(err))})
+    },
+    getPostById: (req, res, next ) => {
+        const db = req.app.get('db');
+        console.log(req.params);
+        db.get_post_by_post_id([req.params.id]).then( (databack) => {
+            res.status(200).send(databack);
+        }).catch( err => console.log('oops'))
     }
-
 }

@@ -20,11 +20,34 @@
     height: 600px;
     background: pink;
     border: solid 2px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+    align-items: center;
 }
 
+.flR{
+    display: flex;
+    flex-direction: row;
+}
 
+.links{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    width: 100%;
+}
 
-.profilePicDash>img{
+.previewContainer{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    background: gray;
+    border: solid 1px black;
+}
+
+.profilePicDash{
     width: 100px;
     height: 100px;
     background: white;

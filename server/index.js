@@ -39,6 +39,7 @@ app.post('/api/login', controller.loginUser);
 app.post('/api/register', controller.registerNewUser);
 
 app.get('/api/posts/all', controller.getPostsTable);
+app.get('/api/posts/:id', controller.getPostById);
 
 const port = 4000;
 app.listen(port, () => { console.log(`Succeeding, Winning, Port: ${port}`) });

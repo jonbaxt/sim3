@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import Nav from '../../FunctionalComps/Nav/Nav';
+// import Nav from '../../FunctionalComps/Nav/Nav';
 
 class Form extends Component  {
 
     render(){
         return (
             <div>
-                <Nav />
+                {/* <Nav /> */}
             <h1>Form</h1>
             </div>
         )

@@ -1,0 +1,33 @@
+.postMain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.postContainer{
+    width: 60%;
+    height: 500px;
+    background: pink;
+    border: 1px black solid;
+    display: flex;
+    flex-direction: row;
+}
+.postInner{
+
+}
+
+.upper{
+    display: flex;
+}
+.upper>img{
+    width: 40%;
+    height: 40%;
+}
+
+.downer{
+    display: flex;
+
+}
+.downer>img{
+    width: 50px;
+    height: 50px;
+}

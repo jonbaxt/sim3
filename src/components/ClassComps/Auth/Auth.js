@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import './Auth.css';
 import imgFile from '../../Images/helo_logo.png';
-import Nav from '../../FunctionalComps/Nav/Nav';
+// import Nav from '../../FunctionalComps/Nav/Nav';
 import { updateUserInfo } from '../../../ducks/reducer';
 
 class Auth extends Component {
@@ -80,7 +80,7 @@ class Auth extends Component {
     render() {
         return (
             <div className='AuthMainOuter'>
-                <Nav />
+                {/* <Nav /> */}
 
                 <div className='AuthMain'>
                     <div className='boxCont'>
