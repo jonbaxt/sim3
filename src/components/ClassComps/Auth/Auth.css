@@ -1,0 +1,28 @@
+.AuthMain{
+    background: gradient(#FF70A6 #E9FF70);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxCont{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 600px;
+    height: 500px;
+    background: #FF70A6;
+    /* gradient(#FF70A6 #E9FF70); */
+    border: solid 1px E9FF70;
+}
+
+.picHolder>img{
+    width: 70px;
+    height: 70px;
+}
+
+.fl{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

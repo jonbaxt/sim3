@@ -1,0 +1,25 @@
+.navCont{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: pink;
+    width: 200px;
+    height: 700px;
+}
+
+/* .profilePic{
+    
+} */
+
+.profilePic>img{
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 50%;
+}
+
+.navigationPic{
+    width: 70px;
+    height: 70px;
+}

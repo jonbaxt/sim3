@@ -1,0 +1,32 @@
+.dashMainBox{
+    display:flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+}
+
+.topContainer{
+    width: 65%;
+    height: 40px;
+    background: pink;
+    border: solid 2px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottomContainer{
+    width: 65%;
+    height: 600px;
+    background: pink;
+    border: solid 2px black;
+}
+
+
+
+.profilePicDash>img{
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 50%;
+}
