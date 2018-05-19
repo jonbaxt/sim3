@@ -69,6 +69,7 @@ class Auth extends Component {
             password: this.state.password
         }
         axios.post('/api/register', sendPackage).then((passbackInfo) => {
+            this.props.updateUserInfo(passbackInfo.data[0]);
             console.log(`Register success`, passbackInfo)
         })
         // this.setState({
@@ -86,16 +87,18 @@ class Auth extends Component {
                     <div className='boxCont'>
                         <div className='picHolder'><img src={imgFile} alt='' /></div>
                         <h1>Helo</h1>
-                        <div className='fl'>
+                        <div className='fl inputBoxCont'>
+
                             <p>Username </p><input type='text' onChange={(e) => this.handleUserNameChange(e.target.value)} value={this.state.username} />
+                      
                         </div>
-                        <div className='fl'>
+                        <div className='fl inputBoxCont'>
                             <p>Password </p><input type='text' onChange={(e) => this.handlePasswordChange(e.target.value)} value={this.state.password} />
                         </div>
 
                         <div className='fl'>
-                            <Link to='/dashboard'><button onClick={this.handleLogin }>Login</button></Link>
-                            <Link to='/dashboard'><button onClick={this.handleRegister }>Register</button></Link>
+                            <Link to='/dashboard'><button className='submitButtons' onClick={this.handleLogin }>Login</button></Link>
+                            <Link to='/dashboard'><button className='submitButtons' onClick={this.handleRegister }>Register</button></Link>
                             {/* <button onClick={this.handleLogin}>Login</button> */}
                             {/* <button onClick={this.handleRegister}>Register</button> */}
                         </div>

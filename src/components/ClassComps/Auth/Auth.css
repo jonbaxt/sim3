@@ -1,8 +1,9 @@
 .AuthMain{
-    background: gradient(#FF70A6 #E9FF70);
+    background: linear-gradient(to right, #FF70A6, #FF9770, #FFD670 , #E9FF70);
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #F2F2F2;
 }
 
 .boxCont{
@@ -11,18 +12,33 @@
     justify-content: space-evenly;
     width: 600px;
     height: 500px;
-    background: #FF70A6;
+    background: linear-gradient(to right, #FF70A6, #FF9770, #FFD670 , #E9FF70);
     /* gradient(#FF70A6 #E9FF70); */
     border: solid 1px E9FF70;
 }
+.boxCont>h1{
+    font-size: 75px;
+    font-weight: bolder;
+}
 
 .picHolder>img{
-    width: 70px;
-    height: 70px;
+    width: 120px;
+    height: 120px;
 }
 
 .fl{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+.inputBoxCont>input{
+    /* height: 20px; */
+    width: 260px;
+}
+.submitButtons{
+    background: #403D39;
+    color: #F2F2F2;
+    border: none;
+    width: 70px;
+    height: 40px;
 }

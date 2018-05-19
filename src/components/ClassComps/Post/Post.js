@@ -38,16 +38,18 @@ class Post extends Component {
 
     render() {
         let post = () => (
-            <div className='postContainer'>
-                <h1>{this.state.title}</h1>
-                <div className='postInner'>
-                    <div className='upper'>
+            <div className='postContainer '>
+                <div className='postInner' >
+                    <div className='upper' >
+                        <p>{this.state.title}</p>
                         <img src={this.state.img} alt='' />
-                        <p>{this.state.content}</p>
                     </div>
+                     <div className='middleA'>
+                        <p>{this.state.content}</p>
+                        </div>
                     <div className='downer'>
-                        <p>{this.state.author}</p>
                         <img src={this.state.authorPicture} alt='' />
+                        <p>{this.state.author}</p>
                     </div>
                 </div>
             </div>

@@ -24,8 +24,8 @@ module.exports = {
     registerNewUser: (req, res, next) => {
         const db = req.app.get('db');
         const { username, password } = req.body;
-
-        db.create_new_user([username, password, numInc++])
+        const userPic = `https://robohash.org/${numInc++}`
+        db.create_new_user([username, password, userPic])
         .then( (results) => {
             // console.log( results );
             res.status(200).send( results );
