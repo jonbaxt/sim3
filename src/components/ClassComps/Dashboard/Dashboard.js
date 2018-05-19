@@ -35,7 +35,7 @@ class Dashboard extends Component  {
         let createPosts = this.state.posts.map( ( element, index ) => {
             return (
                     <Link key={element.id}  style={{ textDecoration: 'none', color: '#403D39' }} to={`/post/${element.id}`} className='links' > 
-                <div key={element.id}  className='previewContainer' takethis={this.givePostInfo}>
+                <div key={element.id}  className='previewContainer'>
                     
                     <h1>{element.title}</h1>
                     <div className='flR'>

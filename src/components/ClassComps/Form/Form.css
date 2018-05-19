@@ -68,7 +68,7 @@
     width: 100%;
 }
 
-.buttonFormArea>button{
+.buttonFormArea>a>button{
     background: #403D39;
     color: #F2F2F2;
     border: none;

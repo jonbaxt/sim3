@@ -1,10 +1,40 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import './Form.css';
 import defImg from '../../Images/no_image.jpg'
 // import Nav from '../../FunctionalComps/Nav/Nav';
 
 class Form extends Component {
+constructor(){
+    super()
+    this.state = {
+        title: '',
+        img: '',
+        content: ''
+    }
+}
+handleTitle = (e) => {
+    this.setState({title: e})
+    console.log(this.state.title)
+}
+handleImg = (e) => {
+    this.setState({ img: e})
+    console.log(this.state.img)
+}
+handleContent = (e) => {
+    this.setState({ content: e});
+    console.log(this.state.content)
+}
+
+handleComplete = () => {
+
+    axios.post().then( (success) => {
+        console.log(success);
+    } )
+}
 
     render() {
         return (
@@ -17,7 +47,7 @@ class Form extends Component {
 
                     <div className='titleInsertBox'>
                         <h3>Title:</h3>
-                        <input type='text' placeholder='New Title' />
+                        <input type='text' placeholder='New Title' onChange={ (e) => this.handleTitle(e.target.value)} value={this.state.title} />
                     </div>
 
                     <div className='pictureBox'>
@@ -26,16 +56,17 @@ class Form extends Component {
 
                     <div className='imageURLArea'>
                         <h3>Image URL:</h3>
-                        <input type='text' />
+                        <input type='text' value={this.state.img} onChange={ (e) => this.handleImg(e.target.value)} />
                     </div>
 
                     <div className='contentArea' >
                     <h3>Content:</h3>
-                    <textarea rows='7'  />
+                    <textarea rows='7' onChange={ (e) => this.handleContent(e.target.value)} value={this.state.content} />
                     </div>
 
                     <div className='buttonFormArea'>
-                    <button onClick={() => console.log('you clicked me!')}>Post</button>
+                    {/* <button onClick={console.log('you clicked me!')}>Post</button> */}
+                    <Link to='/dashboard'><button onClick={''}>Post</button></Link>
                     </div>
                 </div>
             </div>
@@ -43,4 +74,11 @@ class Form extends Component {
     }
 }
 
-export default Form;
+function mapStateToProps(state) {
+    return {
+        username: state.username,
+        profile: state.profile,
+        userId: state.userId
+    }
+}
+export default connect(mapStateToProps, null)(Form);
