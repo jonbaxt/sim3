@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const massive = require('massive');
-// const session = require('express-session');
+const session = require('express-session');
 // const passport = require('passport');
 // const Auth0Strategy = require('passport-auth0');
 require('dotenv').config();
@@ -10,7 +10,7 @@ const controller = require('./controller');
 
 const {
 //     SERVER_PORT,
-//     SESSION_SECRET,
+    SESSION_SECRET,
 //     DOMAIN,
 //     CLIENT_ID,
 //     CLIENT_SECRET,
@@ -21,6 +21,12 @@ const {
 const app = express();
 
 app.use( bodyParser.json());
+
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
 
 massive(CONNECTION_STRING).then((dbInstance) => {
     console.log('Database Connected');
@@ -40,6 +46,7 @@ app.post('/api/register', controller.registerNewUser);
 
 app.get('/api/posts/all', controller.getPostsTable);
 app.get('/api/posts/:id', controller.getPostById);
+app.post('/api/posts/createnew', controller.createNewPost);
 
 const port = 4000;
 app.listen(port, () => { console.log(`Succeeding, Winning, Port: ${port}`) });
@@ -49,11 +56,7 @@ app.listen(port, () => { console.log(`Succeeding, Winning, Port: ${port}`) });
 // Order in important
 // session
 
-// app.use(session({
-//     secret: SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: true
-// }));
+
 
 //must come after session
 

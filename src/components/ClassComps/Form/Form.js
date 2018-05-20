@@ -13,7 +13,8 @@ constructor(){
     this.state = {
         title: '',
         img: '',
-        content: ''
+        content: '',
+        imgEmpty: true
     }
 }
 handleTitle = (e) => {
@@ -30,9 +31,15 @@ handleContent = (e) => {
 }
 
 handleComplete = () => {
-
-    axios.post().then( (success) => {
-        console.log(success);
+    const sender = {
+        title: this.state.title,
+        img: this.state.img,
+        content: this.state.content,
+        author_id: this.props.userId
+    }
+    axios.post('/api/posts/createnew', sender).then( (success) => {
+        console.log(success, 'postUpdated');
+        this.forceUpdate();
     } )
 }
 
@@ -51,7 +58,7 @@ handleComplete = () => {
                     </div>
 
                     <div className='pictureBox'>
-                        <img className='border' src={defImg} alt='' />
+                        <img className='border' src={this.state.img ? this.state.img  : defImg} alt='' />
                     </div>
 
                     <div className='imageURLArea'>
@@ -66,7 +73,7 @@ handleComplete = () => {
 
                     <div className='buttonFormArea'>
                     {/* <button onClick={console.log('you clicked me!')}>Post</button> */}
-                    <Link to='/dashboard'><button onClick={''}>Post</button></Link>
+                    <Link to='/dashboard'><button onClick={this.handleComplete}>Post</button></Link>
                     </div>
                 </div>
             </div>

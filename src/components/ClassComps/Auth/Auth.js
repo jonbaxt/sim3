@@ -13,7 +13,8 @@ class Auth extends Component {
         super()
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            rejection: 'authorized'
         }
         this.handleUserNameChange = this.handleUserNameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -47,10 +48,14 @@ class Auth extends Component {
         axios.post('/api/login', sendPackage).then((passbackInfo) => {
             // console.log(`Login success`, passbackInfo)
             if (passbackInfo.data.length === 0) {
+                this.setState({ rejection: 'forbidden'});
                 console.log('Forbidden', passbackInfo.data.length)
+                // alert('Login Failure, Please Enter Correct Username and Password');
             } else{
+                this.setState({ rejection: 'authorized'})
                 // console.log('There is data', passbackInfo.data)
                 this.props.updateUserInfo(passbackInfo.data[0]);
+                // this.forceUpdate();
             }
             // console.log(passbackInfo.data)
             // (<Link to='/dashboard' />)
@@ -63,6 +68,8 @@ class Auth extends Component {
     }
 
     handleRegister = () => {
+        // this.props.session = 
+        console.log(this.props.session)
         console.log('Register Clicked')
         const sendPackage = {
             username: this.state.username,
@@ -71,6 +78,7 @@ class Auth extends Component {
         axios.post('/api/register', sendPackage).then((passbackInfo) => {
             this.props.updateUserInfo(passbackInfo.data[0]);
             console.log(`Register success`, passbackInfo)
+            // this.forceUpdate();
         })
         // this.setState({
         //     username:'',
@@ -97,7 +105,7 @@ class Auth extends Component {
                         </div>
 
                         <div className='fl'>
-                            <Link to='/dashboard'><button className='submitButtons' onClick={this.handleLogin }>Login</button></Link>
+                            <Link to={this.state.rejection === 'authorized' ? '/dashboard'  : '/'}><button className='submitButtons' onClick={this.handleLogin }>Login</button></Link>
                             <Link to='/dashboard'><button className='submitButtons' onClick={this.handleRegister }>Register</button></Link>
                             {/* <button onClick={this.handleLogin}>Login</button> */}
                             {/* <button onClick={this.handleRegister}>Register</button> */}

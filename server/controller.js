@@ -1,4 +1,8 @@
-let numInc = 10;
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+let numInc = getRandomInt(100);
 
 module.exports = {
     initializeTable: (req, res, next) => {
@@ -24,10 +28,12 @@ module.exports = {
     registerNewUser: (req, res, next) => {
         const db = req.app.get('db');
         const { username, password } = req.body;
-        const userPic = `https://robohash.org/${numInc++}`
+        const userPic = `https://robohash.org/${numInc}`
         db.create_new_user([username, password, userPic])
         .then( (results) => {
-            // console.log( results );
+            req.session.userid = results[0].id;
+            console.log( results );
+            console.log( req.session.userid);
             res.status(200).send( results );
         }).catch( err => {
             // console.log(`Failed to register`);
@@ -50,5 +56,14 @@ module.exports = {
         db.get_post_by_post_id([req.params.id]).then( (databack) => {
             res.status(200).send(databack);
         }).catch( err => console.log('oops'))
+    },
+    createNewPost: (req, res, next) => {
+        const db = req.app.get('db');
+        console.log(req.params);
+        console.log(req.body);
+        const { title, img, content, author_id } = req.body;
+        db.create_new_post([title, img, content, author_id]).then( (succ) => {
+            res.status(200).send('Post Successful');
+        }).catch( err => console.log(`Unable to post on server ${err}`))
     }
 }
